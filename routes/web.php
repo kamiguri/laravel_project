@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::post('/video/{id}/comment', [CommentController::class, 'store'])->name('comment.store');
+    Route::post('/video/{id}/comment', [CommentController::class, 'storeVideoComment'])->name('video.comment.store');
 });
 
 require __DIR__.'/auth.php';
