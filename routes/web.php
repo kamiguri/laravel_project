@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/video/{id}/comment', [CommentController::class, 'storeVideoComment'])->name('video.comment.store');
+    Route::get('/comment/{id}/edit', [CommentController::class, 'edit'])->name('comment.edit');
     Route::put('/comment/{id}', [CommentController::class, 'update'])->name('comment.update');
 });
 

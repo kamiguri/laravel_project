@@ -20,6 +20,12 @@ class CommentController extends Controller
         return to_route('video.show', ['id' => $id]);
     }
 
+    public function edit($id) {
+        $comment = Comment::find($id);
+
+        return view('comment.edit', compact('comment'));
+    }
+
     public function update(Request $request, string $id) {
         $comment = Comment::find($id);
         $comment->text = $request->text;
