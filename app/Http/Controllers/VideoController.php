@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\VideoRequest;
 use App\Models\Video;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,18 +21,21 @@ class VideoController extends Controller
         return view('/video/create');
     }
 
-    public function store(Request $request)
+    public function store(VideoRequest $request)
     {
         // storage/app/public/imagesにパスを保存
-        $path=$request->file('video')->storeAs('images','youtube','public');
+        $path = $request->file('video')->storeAs('images','youtube','public');
 
+        $session_put = $request->session()->put('uploaded_file',$path);
+        $session = session()->get($session_put);
         $videos = new Video();
         $videos->title = $request->title;
         $videos->path = $path;
         $videos->overview = $request->overview;
         $videos->user_id = Auth::id();
-        // dd($request->video,$path);
+        // dd($session);
         $videos->save();
+
         return redirect()->route('video.index');
     }
 
@@ -48,7 +51,7 @@ class VideoController extends Controller
         return view('/video/edit',compact('video'));
     }
 
-    public function update(Request $request , string $id)
+    public function update(VideoRequest $request , string $id)
     {
         $path=$request->file('video')->storeAs('images','youtube','public');
 
