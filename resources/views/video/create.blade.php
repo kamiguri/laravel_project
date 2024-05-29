@@ -4,15 +4,18 @@
             {{ __('You Tube!!') }}
         </h2>
     </x-slot>
+    @foreach ($errors->all() as $error)
+        {{$error}}
+    @endforeach
     <form action="{{ route('video.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="title">タイトル：</label>
-            <input type="text" class="form-control"  name="title" required><br>
+            <input type="text" class="form-control"  name="title" value="{{old('title')}}"><br>
             <label for="file">ファイルを選択：</label>
-            <input type="file" class="form-control" name="video" required><br>
+            <input type="file" class="form-control" name="video"><br>
             <label for="overview">概要：</label>
-            <textarea type="textarea" class="form-control" name="overview" required></textarea><br>
+            <textarea type="textarea" class="form-control" name="overview">{{old('overview')}}</textarea><br>
         </div>
         <button type="submit" class="btn btn-primary">アップロード</button>
     </form>

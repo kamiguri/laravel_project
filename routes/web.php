@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/video/show/{id}',[VideoController::class,'show'])->name('video.show');
     Route::post('/video/delete/{id}',[VideoController::class,'delete'])->name('video.delete');
     Route::get('/video/edit/{id}',[VideoController::class,'edit'])->name('video.edit');
-    Route::put('/video/update/{id}',[VideoController::class,'update'])->name('video.update');
+    Route::post('/video/update/{id}',[VideoController::class,'update'])->name('video.update');
 });
 
 Route::middleware('auth')->group(function (){
