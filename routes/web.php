@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VideoController;
@@ -27,4 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/video/edit/{id}',[VideoController::class,'edit'])->name('video.edit');
     Route::put('/video/update/{id}',[VideoController::class,'update'])->name('video.update');
 });
+
+Route::middleware('auth')->group(function () {
+    Route::post('/video/{id}/comment', [CommentController::class, 'store'])->name('comment.store');
+});
+
 require __DIR__.'/auth.php';
