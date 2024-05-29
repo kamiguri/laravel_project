@@ -33,4 +33,12 @@ class CommentController extends Controller
 
         return to_route('video.show', ['id' => $comment->commentable_id]);
     }
+
+    public function destroy(string $id) {
+        $comment = Comment::find($id);
+        $commentable_id = $comment->commentable_id;
+        $comment->delete();
+
+        return to_route('video.show', ['id' => $commentable_id]);
+    }
 }
