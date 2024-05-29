@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, string $id) {
+    public function storeVideoComment(Request $request, string $id) {
         $comment = new Comment();
         $comment->user_id = Auth::id();
-        $comment->content_id = $id;
+        $comment->commentable_id = $id;
+        $comment->commentable_type = Video::class;
         $comment->text = $request->text;
         $comment->save();
 
-        return route('video.show', ['id' => $id]);
+        return to_route('video.show', ['id' => $id]);
     }
 }
