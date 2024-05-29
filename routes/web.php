@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\CommunityController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,4 +28,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/video/edit/{id}',[VideoController::class,'edit'])->name('video.edit');
     Route::put('/video/update/{id}',[VideoController::class,'update'])->name('video.update');
 });
+
+Route::middleware('auth')->group(function (){
+    Route::get('/community/index', [CommunityController::class, 'index'])->name('community.index');
+    Route::get('/community/create', [CommunityController::class, 'create'])->name('community.create');
+});
+
 require __DIR__.'/auth.php';

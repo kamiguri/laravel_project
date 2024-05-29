@@ -5,7 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Commmunity extends Model
+class Community extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'com_text',
+        'com_comment'
+    ];
 }

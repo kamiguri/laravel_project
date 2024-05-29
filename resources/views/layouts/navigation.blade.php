@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('video.index')" :active="request()->routeIs('video.index')">
                         {{ __('You Tube') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('community.index')" :active="request()->routeIs('community.index')">
+                        {{ __('Community') }}
+                    </x-nav-link>
                 </div>
             </div>
 

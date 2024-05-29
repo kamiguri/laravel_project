@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('commmunities', function (Blueprint $table) {
+        Schema::create('communities', function (Blueprint $table) {
             $table->id();
-            $table->id('user_id');
-            $table->id();
-            $table->id();
-            $table->id();
-            $table->id();
+            $table->string('com_text');//投稿記事の本文
+            $table->string('com_comment');//投稿記事のコメント
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('commmunities');
+        Schema::dropIfExists('communities');
     }
 };
