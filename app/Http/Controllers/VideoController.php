@@ -2,19 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\VideoRequest;
 use App\Models\Video;
 use Illuminate\Support\Facades\Auth;
 
 class VideoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if($request->input('search'))
+        {
+            $request->input('search');
+            $query_request = $request->input('search');
+            $query_parameter = $request->query('search');
+            $video_query = Video::query()->where('title','LIKE','%' . self::escape($query_request) . '%')->get();
+            // dd($video_query);
+            return view('/video/index',compact('video_query','query_parameter'));
+        }
         $videos = Video::select('id','title','path','overview')->get();
-        // dd($videos);
         return view('/video/index',compact('videos'));
     }
 
+    public static function escape($str)
+    {
+        return str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $str);
+    }
 
     public function create()
     {
