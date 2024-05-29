@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/video/index', [VideoController::class, 'index'])->name('video.index');
+    Route::post('/video/index',[VideoController::class, 'index'])->name('video.index');
     Route::get('/video/create', [VideoController::class, 'create'])->name('video.create');
     Route::post('/video/store', [VideoController::class, 'store'])->name('video.store');
     Route::get('/video/show/{id}',[VideoController::class,'show'])->name('video.show');
