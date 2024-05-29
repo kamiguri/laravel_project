@@ -15,5 +15,6 @@
     </form>
     <a href="{{route('video.edit',$video->id)}}">編集画面へ</a><br>
     <a href="/video/index">一覧画面へ戻る</a>
+    @include('comment.create')
     @include('comment.index')
 </x-app-layout>
