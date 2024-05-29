@@ -10,12 +10,57 @@ class CommunityController extends Controller
 {
     public function index()
     {
-        $communities = Community::select('id','com_text','com_comment')->get();
-        return view('/community/index');
+        $communities = Community::all();
+        return view('community.index', compact('communities'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
         return view('/community/create');
+    }
+
+    public function store(Request $request)
+    {
+        $communities = new Community();
+        $communities->users_id = Auth::id();
+        $communities->com_text = $request->com_text;
+        $communities->com_comment = $request->com_comment;
+        $communities->updated_at = now();
+
+        $communities->save();
+
+        return redirect()->route('community.index');
+    }
+
+    public function show()
+    {
+        $communities = Community::all();
+        return view('community.show', compact('communities'));
+    }
+
+    public function edit($id){
+        $communities = Community::find($id);
+        return view('community.edit', compact('communities'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // $validated = $request->validate([
+        //     'title' => ['required', 'min:2', 'max:100'],
+        // ]);
+        $communities = new Community();
+        $communities = Community::find($id);
+        $communities->com_text = $request->com_text;
+        $communities->updated_at = now();
+
+        $communities->save();
+
+        return view('community.show', compact('communities'));
+}
+
+    public function delete($id){
+        $com_to_del = Community::find($id);
+        $com_to_del->delete();
+        return redirect()->route('community.show');
     }
 }
