@@ -1,4 +1,4 @@
-@foreach ($comments as $comment)
+@forelse ($video->comments as $comment)
 <div>
     <p><b>{{ $comment->user->name }}</b></p>
     <p>{{ $comment->text }}</p>
@@ -6,4 +6,4 @@
 </div>
 @empty
 <p>コメントはまだありません</p>
-@endforeach
+@endforelse
