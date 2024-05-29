@@ -19,4 +19,12 @@ class CommentController extends Controller
 
         return to_route('video.show', ['id' => $id]);
     }
+
+    public function update(Request $request, string $id) {
+        $comment = Comment::find($id);
+        $comment->text = $request->text;
+        $comment->save();
+
+        return to_route('video.show', ['id' => $comment->commentable_id]);
+    }
 }

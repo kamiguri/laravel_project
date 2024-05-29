@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/video/{id}/comment', [CommentController::class, 'storeVideoComment'])->name('video.comment.store');
+    Route::put('/comment/{id}', [CommentController::class, 'update'])->name('comment.update');
 });
 
 require __DIR__.'/auth.php';
