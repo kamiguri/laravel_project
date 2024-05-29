@@ -1,3 +1,4 @@
+@auth
 <div>
     <form action="{{ route('video.comment.store', [ 'id' => $video->id ])}}" method="POST">
         @csrf
@@ -5,3 +6,4 @@
         <button type="submit">送信</button>
     </form>
 </div>
+@endauth
