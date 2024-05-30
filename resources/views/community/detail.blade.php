@@ -24,4 +24,11 @@
     </div>
     <h1><a href="/community/create">コミュニティ投稿画面へ</a></h1>
     <h1><a href="/community/index">投稿一覧画面へ</a></h1>
+
+    @include('comment.create-community-comment')
+    @forelse ($community->comments as $comment)
+        @include('comment.index')
+    @empty
+    <p>コメントはまだありません</p>
+    @endforelse
 </x-app-layout>
