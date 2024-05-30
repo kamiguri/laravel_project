@@ -11,9 +11,12 @@
         <button>検索</button>
     </form>
 
-    <div class="video-list">
+    <h1><a href="/video/create">動画投稿画面へ</a></h1>
+
+    <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
         @if(isset($video_query))
             @foreach($video_query as $query)
+            <div class="video-item">
                 <a href="{{route('video.show',$query->id)}}">
                     <p>タイトル：{{$query->title}}</p>
                     <video controls width="400" muted>
@@ -22,6 +25,7 @@
                     <p>概要：{{$query->overview}}</p>
                     <p>作成者：{{$query->user->name}}</p>
                 </a>
+            </div>
             @endforeach
         @else
             @foreach($videos as $video)
@@ -37,5 +41,5 @@
                 </div>
             @endforeach
         @endif
-    <h1><a href="/video/create">動画投稿画面へ</a></h1>
+    </div>
 </x-app-layout>
