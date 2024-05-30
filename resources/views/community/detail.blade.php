@@ -20,6 +20,7 @@
     <div>
         <p>{{ $community->com_text }}</p>
     </div>
+    @if ($community->users_id === Auth::id())
     <div>
         <form action="{{ route('community.edit', $community->id) }}" method="post">
             <a href="{{route('community.edit', $community->id)}}">編集</a>
@@ -31,6 +32,7 @@
             @csrf
         </form>
     </div>
+    @endif
     <h1><a href="/community/create">コミュニティ投稿画面へ</a></h1>
     <h1><a href="/community/index">投稿一覧画面へ</a></h1>
 
