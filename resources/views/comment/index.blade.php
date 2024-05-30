@@ -1,4 +1,3 @@
-@forelse ($video->comments as $comment)
 <div>
     <p><b>{{ $comment->user->name }}</b></p>
     <p>{{ $comment->text }}</p>
@@ -14,6 +13,3 @@
         </div>
     @endif
 </div>
-@empty
-<p>コメントはまだありません</p>
-@endforelse

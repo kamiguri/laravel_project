@@ -11,6 +11,11 @@
     </video>
 
     <a href="/video/index">一覧画面へ戻る</a>
+    
     @include('comment.create-video-comment')
-    @include('comment.index')
+    @forelse ($video->comments as $comment)
+        @include('comment.index')
+    @empty
+    <p>コメントはまだありません</p>
+    @endforelse
 </x-app-layout>
