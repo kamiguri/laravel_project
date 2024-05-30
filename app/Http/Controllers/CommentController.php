@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function searchIndex(Request $request) {
+    public function search(Request $request) {
         $keywords = $request->keywords;
         $comments = null;
 
