@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('community.index')" :active="request()->routeIs('community.index')">
                         {{ __('Community') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('comment.search')" :active="request()->routeIs('comment.search')">
+                        {{ __('Search Comment') }}
+                    </x-nav-link>
                 </div>
             </div>
 
