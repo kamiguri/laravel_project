@@ -13,10 +13,6 @@
             <input type="text" name="com_text" id="com_text">
         </div>
         <div>
-            <label for="title">コメント内容</label>
-            <input type="text" name="com_comment" id="com_comment">
-        </div>
-        <div>
             <button type="submit" class="btn btn-primary">アップロード</button>
         </div>
     </form>

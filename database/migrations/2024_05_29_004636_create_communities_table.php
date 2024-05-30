@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('communities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('users_id')->constrained('users');
-            $table->string('com_text');//投稿記事の本文
-            $table->string('com_comment');//投稿記事のコメント
+            $table->string('com_text');
             $table->timestamps();
         });
     }

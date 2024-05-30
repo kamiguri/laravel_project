@@ -14,11 +14,6 @@ class CommunitySeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('communities')->insert([
-            'id' => 1,
-            'users_id' => 0,
-            'com_text' => 'aaa',
-            'com_comment' => 'aaa'
-        ]);
+        //
     }
 }

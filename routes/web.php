@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function (){
     Route::post('/community/delete/{id}',[CommunityController::class,'delete'])->name('community.delete');
     Route::get('/community/edit/{id}',[CommunityController::class,'edit'])->name('community.edit');
     Route::post('/community/edit/{id}', [CommunityController::class, 'edit'])->name('community.edit');
-    Route::post('/community/edit/{id}', [CommunityController::class, 'update'])->name('community.update');
+    Route::post('/community/update/{id}', [CommunityController::class, 'update'])->name('community.update');
 });
 
 require __DIR__.'/auth.php';

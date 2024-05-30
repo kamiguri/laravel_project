@@ -19,9 +19,6 @@
         <p>{{ $community->com_text }}</p>
     </div>
     <div>
-        <p>{{ $community->com_comment }}</p>
-    </div>
-    <div>
         <form action="{{ route('community.edit', $community->id) }}" method="post">
             <a href="{{route('community.edit', $community->id)}}">編集</a>
             @csrf

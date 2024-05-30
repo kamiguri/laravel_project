@@ -6,17 +6,17 @@
     </x-slot>
     <h1>コミュニティ投稿編集</h1>
 
-    <form action="{{ route('community.update') }}" method="POST">
+    <form action="{{ route('community.update', $communities->id) }}" method="POST">
+        @csrf
         <div>
             <div>
                 <label for="com_text">投稿編集</label>
-                <input type="text" name="com_text" value="{{old('com_text', $community->com_text)}}">
+                <input type="text" name="com_text" value="{{old('com_text', $communities->com_text)}}">
             </div>
         </div>
         <div>
             <input type="submit" value="送信">
         </div>
-        @csrf
     </form>
     <h1><a href="/community/create">コミュニティ投稿画面へ</a></h1>
     <h1><a href="/community/show">自分の投稿へ</a></h1>

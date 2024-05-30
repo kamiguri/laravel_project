@@ -16,9 +16,6 @@
     <div>
         <p>{{ $community->com_text }}</p>
     </div>
-    <div>
-        <p>{{ $community->com_comment }}</p>
-    </div>
     @endforeach
 
     <h1><a href="/community/create">コミュニティ投稿画面へ</a></h1>

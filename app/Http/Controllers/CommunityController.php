@@ -11,6 +11,7 @@ class CommunityController extends Controller
     public function index()
     {
         $communities = Community::all();
+        $communities = Community::orderBy('created_at', 'desc')->get();
         return view('community.index', compact('communities'));
     }
 
@@ -24,7 +25,6 @@ class CommunityController extends Controller
         $communities = new Community();
         $communities->users_id = Auth::id();
         $communities->com_text = $request->com_text;
-        $communities->com_comment = $request->com_comment;
         $communities->updated_at = now();
 
         $communities->save();
@@ -35,6 +35,7 @@ class CommunityController extends Controller
     public function show()
     {
         $communities = Community::all();
+        $communities = Community::orderBy('created_at', 'desc')->get();
         return view('community.show', compact('communities'));
     }
 
@@ -48,14 +49,14 @@ class CommunityController extends Controller
         // $validated = $request->validate([
         //     'title' => ['required', 'min:2', 'max:100'],
         // ]);
-        $communities = new Community();
         $communities = Community::find($id);
+        // $communities->users_id = Auth::id();
         $communities->com_text = $request->com_text;
         $communities->updated_at = now();
 
         $communities->save();
 
-        return view('community.show', compact('communities'));
+        return redirect()->route('community.index');
 }
 
     public function delete($id){
