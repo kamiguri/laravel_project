@@ -18,7 +18,7 @@ class CommentController extends Controller
             $comments = Comment::search($keywords)->get();
         }
 
-        return view('Comment.searchIndex', compact('comments'));
+        return view('comment.search-index', compact('comments'));
     }
 
     public function storeVideoComment(Request $request, string $id) {
