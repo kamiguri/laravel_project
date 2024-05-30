@@ -12,6 +12,7 @@
                 <source src="{{ url($video->path) }}">
             </video>
             <p>{{$video->title}}</p>
+            <p>{{$video->user->name}}</p>
             <p>{{$video->overview}}</p>
         </div>
 
