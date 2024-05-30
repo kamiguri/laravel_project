@@ -15,20 +15,24 @@
         @if(isset($video_query))
             @foreach($video_query as $query)
                 <a href="{{route('video.show',$query->id)}}">
-                    {{$query->title}}
+                    <p>タイトル：{{$query->title}}</p>
                     <video controls width="400" muted>
                         <source src="{{ asset($query->path) }}">
                     </video>
+                    <p>概要：{{$query->overview}}</p>
+                    <p>作成者：{{$query->user->name}}</p>
                 </a>
             @endforeach
         @else
             @foreach($videos as $video)
                 <div class="video-item">
                     <a href="{{route('video.show',$video->id)}}">
+                        <p>タイトル：{{$video->title}}</p>
                         <video controls width="400" muted>
                             <source src="{{ asset($video->path) }}">
                         </video>
-                        <p>{{$video->title}}</p>
+                        <p>概要：{{$video->overview}}</p>
+                        <p>タイトル：{{$video->user->name}}</p>
                     </a>
                 </div>
             @endforeach
