@@ -5,17 +5,16 @@
         </h1>
     </x-slot>
     <h1>コミュニティへようこそ</h1>
-    @foreach ($errors->all() as $error)
-    <li> <span class="error">{{ $error }}</span></li>
-    @endforeach
 
     @foreach ($communities as $community)
-    <div>
-        <p>{{ $community->users_id }}</p>
-    </div>
-    <div>
-        <p>{{ $community->com_text }}</p>
-    </div>
+        <a href="{{route('community.detail',$community->id)}}">
+        <div>
+            <p>{{ $community->users_id }}</p>
+        </div>
+        <div>
+            <p>{{ $community->com_text }}</p>
+        </div>
+    </a>
     @endforeach
 
     <h1><a href="/community/create">コミュニティ投稿画面へ</a></h1>
