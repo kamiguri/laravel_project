@@ -40,7 +40,7 @@ class CommentController extends Controller
         $comment->text = $request->text;
         $comment->save();
 
-        return to_route('video.show', ['id' => $id]);
+        return to_route('community.detail', ['id' => $id]);
     }
 
     public function edit($id) {
@@ -54,14 +54,27 @@ class CommentController extends Controller
         $comment->text = $request->text;
         $comment->save();
 
-        return to_route('video.show', ['id' => $comment->commentable_id]);
+        if ($comment->commentable_type === Video::class) {
+            $toRouteName = 'video.show';
+        } else {
+            $toRouteName = 'community.detail';
+        }
+
+        return to_route($toRouteName, ['id' => $comment->commentable_id]);
     }
 
     public function destroy(string $id) {
         $comment = Comment::find($id);
         $commentable_id = $comment->commentable_id;
+        $commentable_type = $comment->commentable_type;
         $comment->delete();
 
-        return to_route('video.show', ['id' => $commentable_id]);
+        if ($commentable_type === Video::class) {
+            $toRouteName = 'video.show';
+        } else {
+            $toRouteName = 'community.detail';
+        }
+
+        return to_route($toRouteName, ['id' => $commentable_id]);
     }
 }
