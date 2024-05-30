@@ -16,7 +16,7 @@
 
             <div class="rounded bg-neutral-200 p-3">
                 <p class="font-medium">{{$video->created_at}}</p>
-                <p>{!! nl2br(htmlspecialchars($video->overview)) !!}</p>
+                <p class="whitespace-pre">{{$video->overview}}</p>
             </div>
         </div>
 
