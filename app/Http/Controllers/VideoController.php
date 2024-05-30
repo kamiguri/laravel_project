@@ -15,12 +15,12 @@ class VideoController extends Controller
         {
             $request->input('search');
             $query_request = $request->input('search');
-            $query_parameter = $request->query('search');
             $video_query = Video::query()->where('title','LIKE','%' . self::escape($query_request) . '%')->get();
             // dd($video_query);
-            return view('/video/index',compact('video_query','query_parameter'));
+            return view('/video/index',compact('video_query'));
         }
-        $videos = Video::select('id','title','path','overview')->get();
+        $videos = Video::with('user')->get();
+
         return view('/video/index',compact('videos'));
     }
 
@@ -37,16 +37,13 @@ class VideoController extends Controller
     public function store(VideoRequest $request)
     {
         // storage/app/public/imagesにパスを保存
-        $path = $request->file('video')->storeAs('images','youtube','public');
-
-        $session_put = $request->session()->put('uploaded_file',$path);
-        $session = session()->get($session_put);
+        $path = $request->file('video')->store('images','public');
+        $filesize = $request->file("video")->getSize();
         $videos = new Video();
         $videos->title = $request->title;
         $videos->path = $path;
         $videos->overview = $request->overview;
         $videos->user_id = Auth::id();
-        // dd($session);
         $videos->save();
 
         return redirect()->route('video.index');
@@ -66,7 +63,7 @@ class VideoController extends Controller
 
     public function update(VideoRequest $request , string $id)
     {
-        $path=$request->file('video')->storeAs('images','youtube','public');
+        $path=$request->file('video')->store('images','public');
 
         $video = Video::find($id);
         $video->title = $request->title;
