@@ -72,13 +72,20 @@ class VideoController extends Controller
         $video->user_id = Auth::id();
         // dd($request->video,$path);
         $video->save();
-        return redirect()->route('video.index');
+        return redirect()->route('profile.post');
     }
     public function delete(string $id)
     {
         $video = Video::find($id);
         $video->delete();
-        return redirect()->route('video.index');
+        return redirect()->route('profile.post');
+    }
+
+    public function myPost()
+    {
+        $videos = Video::all();
+        // dd($video);
+        return view('/profile/post',compact('videos'));
     }
 
 }

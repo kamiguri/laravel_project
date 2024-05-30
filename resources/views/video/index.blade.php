@@ -32,7 +32,7 @@
                             <source src="{{ asset($video->path) }}">
                         </video>
                         <p>概要：{{$video->overview}}</p>
-                        <p>タイトル：{{$video->user->name}}</p>
+                        <p>作成者：{{$video->user->name}}</p>
                     </a>
                 </div>
             @endforeach
