@@ -15,6 +15,13 @@
         <p>{{ $community->com_text }}</p>
     </div>
     <div>
+        @if ($community->path)
+            <img src="{{ Storage::url($community->path) }}" alt="Community Image">
+        @else
+            <p>画像は登録されていません</p>
+        @endif
+    </div>
+    <div>
         <form action="{{ route('community.edit', $community->id) }}" method="post">
             <a href="{{route('community.edit', $community->id)}}">編集</a>
             @csrf

@@ -6,6 +6,15 @@
     </x-slot>
     <h1>Community</h1>
     <div>
+        <p>
+        @if ($community->path)
+            <img src="{{ Storage::url($community->path) }}" alt="Community Image">
+        @else
+            <p>画像は登録されていません</p>
+        @endif
+        </p>
+    </div>
+    <div>
         <p>{{ $community->users_id }}</p>
     </div>
     <div>
