@@ -10,6 +10,17 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
+    public function searchIndex(Request $request) {
+        $keywords = $request->keywords;
+        $comments = null;
+
+        if ($keywords) {
+            $comments = Comment::search($keywords)->get();
+        }
+
+        return view('Comment.searchIndex', compact('comments'));
+    }
+
     public function storeVideoComment(Request $request, string $id) {
         $comment = new Comment();
         $comment->user_id = Auth::id();
