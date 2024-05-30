@@ -52,7 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/comment/{id}/edit', [CommentController::class, 'edit'])->name('comment.edit');
     Route::put('/comment/{id}', [CommentController::class, 'update'])->name('comment.update');
     Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
-    Route::get('/comment/search', [CommentController::class, 'search'])->name('comment.search')
+    Route::get('/comment/search', [CommentController::class, 'search'])->name('comment.search');
 });
 
 require __DIR__.'/auth.php';
