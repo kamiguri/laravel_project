@@ -39,6 +39,12 @@ class CommunityController extends Controller
         return view('community.show', compact('communities'));
     }
 
+    public function detail($id)
+    {
+        $community = Community::find($id);
+        return view('/community/detail',compact('community'));
+    }
+
     public function edit($id){
         $communities = Community::find($id);
         return view('community.edit', compact('communities'));
@@ -46,11 +52,7 @@ class CommunityController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $validated = $request->validate([
-        //     'title' => ['required', 'min:2', 'max:100'],
-        // ]);
         $communities = Community::find($id);
-        // $communities->users_id = Auth::id();
         $communities->com_text = $request->com_text;
         $communities->updated_at = now();
 

@@ -5,9 +5,6 @@
         </h2>
     </x-slot>
     <h1>Community</h1>
-
-    @foreach ($communities as $community)
-    @if ($community->users_id === Auth::id())
     <div>
         <p>{{ $community->users_id }}</p>
     </div>
@@ -25,9 +22,6 @@
             @csrf
         </form>
     </div>
-    @endif
-    @endforeach
-
     <h1><a href="/community/create">コミュニティ投稿画面へ</a></h1>
     <h1><a href="/community/index">投稿一覧画面へ</a></h1>
 </x-app-layout>
