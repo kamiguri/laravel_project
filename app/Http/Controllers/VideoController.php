@@ -11,6 +11,8 @@ class VideoController extends Controller
 {
     public function index(Request $request)
     {
+        phpinfo();
+        die;
         if($request->input('search'))
         {
             $request->input('search');
