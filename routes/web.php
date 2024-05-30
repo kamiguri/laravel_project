@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VideoController;
@@ -43,6 +44,14 @@ Route::middleware('auth')->group(function (){
     Route::get('/community/edit/{id}',[CommunityController::class,'edit'])->name('community.edit');
     Route::post('/community/edit/{id}', [CommunityController::class, 'edit'])->name('community.edit');
     Route::post('/community/update/{id}', [CommunityController::class, 'update'])->name('community.update');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('/video/{id}/comment', [CommentController::class, 'storeVideoComment'])->name('video.comment.store');
+    Route::post('/community/{id}/comment', [CommentController::class, 'storeCommunityComment'])->name('community.comment.store');
+    Route::get('/comment/{id}/edit', [CommentController::class, 'edit'])->name('comment.edit');
+    Route::put('/comment/{id}', [CommentController::class, 'update'])->name('comment.update');
+    Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
 });
 
 require __DIR__.'/auth.php';
