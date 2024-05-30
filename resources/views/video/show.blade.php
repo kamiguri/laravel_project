@@ -11,8 +11,8 @@
             <video controls autoplay>
                 <source src="{{ url($video->path) }}">
             </video>
-            <p>{{$video->title}}</p>
-            <p>{{$video->user->name}}</p>
+            <p class="text-2xl font-bold">{{$video->title}}</p>
+            <p class="text-lg font-semibold">{{$video->user->name}}</p>
             <p>{!! nl2br(htmlspecialchars($video->overview)) !!}</p>
         </div>
 
