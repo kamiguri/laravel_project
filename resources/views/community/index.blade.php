@@ -7,7 +7,14 @@
     <h1>コミュニティへようこそ</h1>
 
     @foreach ($communities as $community)
-        <a href="{{route('community.detail',$community->id)}}">
+        <a href="{{ route('community.detail', $community->id) }}">
+        <div>
+            @if ($community->path)
+            <img src="{{ Storage::url($community->path) }}" alt="Community Image">
+            @else
+                <p>画像は登録されていません</p>
+            @endif
+        </div>
         <div>
             <p>{{ $community->users_id }}</p>
         </div>

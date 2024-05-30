@@ -6,11 +6,21 @@
     </x-slot>
     <h1>Community</h1>
     <div>
+        <p>
+        @if ($community->path)
+            <img src="{{ Storage::url($community->path) }}" alt="Community Image">
+        @else
+            <p>画像は登録されていません</p>
+        @endif
+        </p>
+    </div>
+    <div>
         <p>{{ $community->users_id }}</p>
     </div>
     <div>
         <p>{{ $community->com_text }}</p>
     </div>
+    @if ($community->users_id === Auth::id())
     <div>
         <form action="{{ route('community.edit', $community->id) }}" method="post">
             <a href="{{route('community.edit', $community->id)}}">編集</a>
@@ -22,6 +32,7 @@
             @csrf
         </form>
     </div>
+    @endif
     <h1><a href="/community/create">コミュニティ投稿画面へ</a></h1>
     <h1><a href="/community/index">投稿一覧画面へ</a></h1>
 
