@@ -19,5 +19,5 @@
         </div>
         <button type="submit" class="btn btn-primary">アップロード</button>
     </form>
-    <a href="/video/index">一覧画面へ戻る</a>
+    <a href="/profile/post">一覧画面へ戻る</a>
 </x-app-layout>

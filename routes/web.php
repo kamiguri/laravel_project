@@ -16,6 +16,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/post', [VideoController::class, 'myPost'])->name('profile.post');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
@@ -33,10 +34,12 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function (){
     Route::get('/community/index', [CommunityController::class, 'index'])->name('community.index');
+    Route::post('/community/index', [CommunityController::class, 'index'])->name('community.index');
     Route::get('/community/create', [CommunityController::class, 'create'])->name('community.create');
     Route::post('/community/create', [CommunityController::class, 'create'])->name('community.create');
     Route::post('/community/store', [CommunityController::class, 'store'])->name('community.store');
     Route::get('/community/show', [CommunityController::class, 'show'])->name('community.show');
+    Route::get('/community/detail/{id}',[CommunityController::class,'detail'])->name('community.detail');
     Route::post('/community/delete/{id}',[CommunityController::class,'delete'])->name('community.delete');
     Route::get('/community/edit/{id}',[CommunityController::class,'edit'])->name('community.edit');
     Route::post('/community/edit/{id}', [CommunityController::class, 'edit'])->name('community.edit');
