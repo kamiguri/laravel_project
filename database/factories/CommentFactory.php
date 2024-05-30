@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Community;
 use App\Models\Video;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,7 +21,7 @@ class CommentFactory extends Factory
         return [
             'user_id' => fake()->numberBetween(1, 21),
             'commentable_id' => fake()->numberBetween(1, 10),
-            'commentable_type' => fake()->randomElement([Video::class,]),
+            'commentable_type' => fake()->randomElement([Video::class, Community::class]),
             'text' => fake()->words(rand(1, 7), true),
         ];
     }
