@@ -13,7 +13,7 @@
             </video>
             <p>{{$video->title}}</p>
             <p>{{$video->user->name}}</p>
-            <p>{{$video->overview}}</p>
+            <p>{!! nl2br(htmlspecialchars($video->overview)) !!}</p>
         </div>
 
         <div>
