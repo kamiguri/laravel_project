@@ -15,8 +15,12 @@
             <p class="text-lg font-semibold p-3">{{$video->user->name}}</p>
 
             <div class="rounded bg-neutral-200 p-3">
+            <div id="video_overview" class="cursor-pointer">
                 <p class="font-medium">{{$video->created_at}}</p>
-                <p class="whitespace-pre">{{$video->overview}}</p>
+                <p id="video_overview_text" class="w-1/4 truncate">{{$video->overview}}</p>
+                <p id="show_more_phrase">...もっと見る</p>
+            </div>
+                <button id="close_video_overview_btn" class="hidden font-light mt-4">一部を表示</button>
             </div>
         </div>
 
