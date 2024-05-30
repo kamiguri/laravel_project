@@ -13,6 +13,7 @@
             </video>
             <p class="text-2xl font-bold">{{$video->title}}</p>
             <p class="text-lg font-semibold">{{$video->user->name}}</p>
+            <p>{{$video->created_at}}</p>
             <p>{!! nl2br(htmlspecialchars($video->overview)) !!}</p>
         </div>
 
