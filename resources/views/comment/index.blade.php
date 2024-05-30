@@ -1,6 +1,6 @@
 <div>
     <p><b>{{ $comment->user->name }}</b></p>
-    <p>{{ $comment->text }}</p>
+    <p class="whitespace-pre">{{ $comment->text }}</p>
     <small>{{ $comment->created_at }}</small>
     @if (Auth::id() === $comment->user_id)
         <div>
