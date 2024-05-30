@@ -11,10 +11,13 @@
             <video controls autoplay>
                 <source src="{{ url($video->path) }}">
             </video>
-            <p class="text-2xl font-bold">{{$video->title}}</p>
-            <p class="text-lg font-semibold">{{$video->user->name}}</p>
-            <p>{{$video->created_at}}</p>
-            <p>{!! nl2br(htmlspecialchars($video->overview)) !!}</p>
+            <p class="text-2xl font-bold px-3">{{$video->title}}</p>
+            <p class="text-lg font-semibold p-3">{{$video->user->name}}</p>
+
+            <div class="rounded bg-neutral-200 p-3">
+                <p class="font-medium">{{$video->created_at}}</p>
+                <p>{!! nl2br(htmlspecialchars($video->overview)) !!}</p>
+            </div>
         </div>
 
         <div>
