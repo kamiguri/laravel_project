@@ -4,9 +4,7 @@
             {{ __('You Tube!!') }}
         </h2>
     </x-slot>
-    @foreach ($errors->all() as $error)
-        {{$error}}
-    @endforeach
+
     <form action="{{ route('video.update',$video->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
