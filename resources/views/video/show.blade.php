@@ -21,7 +21,11 @@
                 <div class="ml-7">
                     <form action="{{route('subsc.store',$video->user->id)}}" method="POST">
                         @csrf
-                        <x-primary-button id="subscButton" class="text-lg">登録</x-primary-button>
+                        @if($is_subscribed)
+                        <x-secondary-button id="subscButton" type="submit">登録解除</x-secondary-button>
+                        @else
+                        <x-primary-button id="subscButton">登録</x-primary-button>
+                        @endif
                     </form>
                 </div>
                 @endif
