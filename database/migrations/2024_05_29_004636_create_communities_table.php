@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('communities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('users_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('com_text');
             $table->string('path')->nullable();
             $table->timestamps();

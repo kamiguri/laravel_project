@@ -23,7 +23,7 @@ class CommunityController extends Controller
     public function store(Request $request)
     {
         $communities = new Community();
-        $communities->users_id = Auth::id();
+        $communities->user_id = Auth::id();
         $communities->com_text = $request->com_text;
 
         if ($request->hasFile('image')) {
