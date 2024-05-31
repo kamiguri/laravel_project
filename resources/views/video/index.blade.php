@@ -32,7 +32,7 @@
                 <div class="video-item">
                     <a href="{{route('video.show',$video->id)}}">
                         <p>タイトル：{{$video->title}}</p>
-                        <video controls width="400" muted>
+                        <video controls width="400" muted class="rounded-lg">
                             <source src="{{ asset($video->path) }}">
                         </video>
                         <p>概要：{{$video->overview}}</p>
