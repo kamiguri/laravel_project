@@ -7,6 +7,19 @@ window.Alpine = Alpine;
 Alpine.start();
 
 
+const clip = document.querySelectorAll(".clip");
+for (let i = 0; i < clip.length; i++) {
+  clip[i].addEventListener("mouseenter", function (e) {
+    clip[i].setAttribute('controls', true)
+    clip[i].play();
+  });
+  clip[i].addEventListener("mouseout", function (e) {
+    clip[i].removeAttribute('controls')
+    clip[i].pause();
+  });
+}
+
+
 const video_overview_elem = document.getElementById('video_overview')
 const video_overview_text_elem = document.getElementById('video_overview_text')
 const close_video_orverview_btn = document.getElementById('close_video_overview_btn')

@@ -13,17 +13,18 @@
 
     <h1><a href="/video/create">動画投稿画面へ</a></h1>
 
-    <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
+    <div class="mt-6 grid grid-cols-1 gap-x-2 gap-y-10 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-4  xl:gap-x-4">
         @if(isset($video_query))
             @foreach($video_query as $query)
             <div class="video-item">
                 <a href="{{route('video.show',$query->id)}}">
-                    <p>タイトル：{{$query->title}}</p>
-                    <video controls width="400" muted>
+                    <video width="400" muted class="clip rounded-lg">
                         <source src="{{ asset($query->path) }}">
                     </video>
-                    <p>概要：{{$query->overview}}</p>
-                    <p>作成者：{{$query->user->name}}</p>
+                    <div class="px-5">
+                        <p class="text-lg font-semibold">{{$query->title}}</p>
+                        <p class="text-sm text-slate-600">{{$query->user->name}}</p>
+                    </div>
                 </a>
             </div>
             @endforeach
@@ -31,12 +32,13 @@
             @foreach($videos as $video)
                 <div class="video-item">
                     <a href="{{route('video.show',$video->id)}}">
-                        <p>タイトル：{{$video->title}}</p>
-                        <video controls width="400" muted>
+                        <video width="400" muted class="clip rounded-lg">
                             <source src="{{ asset($video->path) }}">
                         </video>
-                        <p>概要：{{$video->overview}}</p>
-                        <p>作成者：{{$video->user->name}}</p>
+                        <div class="px-5">
+                            <p class="text-lg font-semibold">{{$video->title}}</p>
+                            <p class="text-sm text-slate-600">{{$video->user->name}}</p>
+                        </div>
                     </a>
                 </div>
             @endforeach
