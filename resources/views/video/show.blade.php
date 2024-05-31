@@ -12,12 +12,16 @@
                 <source src="{{ url($video->path) }}">
             </video>
             <p class="text-2xl font-bold px-3">{{$video->title}}</p>
-            <p class="text-lg font-semibold p-3">{{$video->user->name}}</p>
-            <form action="{{route('subsc.store',$video->user->id)}}" method="POST">
-                @csrf
-                <button id="subscButton" class="subscribe">登録</button>
-            </form>
+            <p class="text-lg font-semibold p-3">{{$video->user->name}} 登録者数：{{$subscribers}}</p>
+            <div class="subscribe">
+            @if(Auth::id() !== $video->user->id)
+                <form action="{{route('subsc.store',$video->user->id)}}" method="POST">
+                    @csrf
+                    <button id="subscButton" class="subscribe">登録</button>
+                </form>
+            @endif
 
+            </div>
             <div class="rounded bg-neutral-200 p-3">
             <div id="video_overview" class="cursor-pointer">
                 <p class="font-medium">{{$video->created_at}}</p>

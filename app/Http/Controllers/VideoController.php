@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\VideoRequest;
+use App\Models\Subscribe;
 use App\Models\Video;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,8 +53,8 @@ class VideoController extends Controller
     public function show(string $id)
     {
         $video = Video::find($id);
-        // dd($video->user->id);
-        return view('/video/show',compact('video'));
+        $subscribers = Subscribe::where('subscribed_id',$video->user_id)->count();
+        return view('/video/show',compact('video','subscribers'));
     }
 
     public function edit(string $id)
