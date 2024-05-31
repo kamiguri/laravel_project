@@ -12,7 +12,6 @@
     <div class="border rounded-lg w-2/3 p-5 mt-5">
         <a href="{{ route('community.detail', $community->id) }}">
         <div>
-<<<<<<< HEAD
             @if ($community->path)
             <img src="{{ Storage::url($community->path) }}" alt="Community Image">
             @else
@@ -21,24 +20,10 @@
         </div>
         <div>
             <p>{{ $community->user_id }}</p>
-=======
-            <p class="font-semibold">{{ $community->user->name}}</p>
->>>>>>> 99516b9fe5e89330fb28e8bb79aa7e30ea54cc1b
         </div>
         <div>
             <p>{{ $community->com_text }}</p>
         </div>
-<<<<<<< HEAD
-
-=======
-        <div>
-            @if ($community->path)
-            <img src="{{ Storage::url($community->path) }}" alt="Community Image" class="rounded-lg mt-3">
-            {{-- @else
-                <p>画像は登録されていません</p> --}}
-            @endif
-        </div>
->>>>>>> 99516b9fe5e89330fb28e8bb79aa7e30ea54cc1b
     </a>
     </div>
     @endforeach
