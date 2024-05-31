@@ -18,7 +18,7 @@
             @foreach($video_query as $query)
             <div class="video-item">
                 <a href="{{route('video.show',$query->id)}}">
-                    <video controls width="400" muted class="clip rounded-lg">
+                    <video width="400" muted class="clip rounded-lg">
                         <source src="{{ asset($query->path) }}">
                     </video>
                     <div class="px-5">
@@ -32,7 +32,7 @@
             @foreach($videos as $video)
                 <div class="video-item">
                     <a href="{{route('video.show',$video->id)}}">
-                        <video controls width="400" muted class="clip rounded-lg">
+                        <video width="400" muted class="clip rounded-lg">
                             <source src="{{ asset($video->path) }}">
                         </video>
                         <div class="px-5">
