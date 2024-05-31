@@ -13,7 +13,7 @@
 
     <h1><a href="/video/create">動画投稿画面へ</a></h1>
 
-    <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
+    <div class="mt-6 grid grid-cols-1 gap-x-2 gap-y-10 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4  xl:gap-x-4">
         @if(isset($video_query))
             @foreach($video_query as $query)
             <div class="video-item">
