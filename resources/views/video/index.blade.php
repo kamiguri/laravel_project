@@ -31,12 +31,13 @@
             @foreach($videos as $video)
                 <div class="video-item">
                     <a href="{{route('video.show',$video->id)}}">
-                        <p>タイトル：{{$video->title}}</p>
                         <video controls width="400" muted class="rounded-lg">
                             <source src="{{ asset($video->path) }}">
                         </video>
-                        <p>概要：{{$video->overview}}</p>
-                        <p>作成者：{{$video->user->name}}</p>
+                        <div class="px-5">
+                            <p class="text-lg font-semibold">{{$video->title}}</p>
+                            <p class="text-sm text-slate-600">{{$video->user->name}}</p>
+                        </div>
                     </a>
                 </div>
             @endforeach
