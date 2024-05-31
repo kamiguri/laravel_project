@@ -12,7 +12,10 @@
     <div class="border rounded w-2/3 p-5 mt-3">
         <a href="{{ route('community.detail', $community->id) }}">
         <div>
-            <p>{{ $community->users_id }}</p>
+            <p>{{ $community->user->name}}</p>
+        </div>
+        <div>
+            <p>{{ $community->com_text }}</p>
         </div>
         <div>
             @if ($community->path)
@@ -20,9 +23,6 @@
             {{-- @else
                 <p>画像は登録されていません</p> --}}
             @endif
-        </div>
-        <div>
-            <p>{{ $community->com_text }}</p>
         </div>
     </a>
     </div>
