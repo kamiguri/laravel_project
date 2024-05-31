@@ -23,11 +23,11 @@
     @if ($community->users_id === Auth::id())
     <div>
         <form action="{{ route('community.edit', $community->id) }}" method="post">
-            <a href="{{route('community.edit', $community->id)}}">編集</a>
+            <a href="{{ route('community.edit', $community->id )}}">編集</a>
             @csrf
         </form>
 
-        <form action="{{route('community.delete', $community->id)}}" method="post">
+        <form action="{{ route('community.delete', $community->id) }}" method="post">
             <input type="submit"  name="delete" value="削除">
             @csrf
         </form>

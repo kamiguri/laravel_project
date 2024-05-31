@@ -17,6 +17,6 @@ class Community extends Model
 
     public function comments(): MorphMany
     {
-        return $this->morphMany(Comment::class, 'commentable');
+        return $this->morphMany(Comment::class, 'commentable')->orderBy('created_at', 'desc');
     }
 }
