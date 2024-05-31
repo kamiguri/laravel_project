@@ -9,7 +9,7 @@
     <h1><a href="/community/show">自分の投稿へ</a></h1>
 
     @foreach ($communities as $community)
-    <div class="border rounded w-2/3 p-5 mt-5">
+    <div class="border rounded-lg w-2/3 p-5 mt-5">
         <a href="{{ route('community.detail', $community->id) }}">
         <div>
             <p class="font-semibold">{{ $community->user->name}}</p>
