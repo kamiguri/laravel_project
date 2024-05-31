@@ -12,14 +12,14 @@
     <div class="border rounded w-2/3 p-5 mt-5">
         <a href="{{ route('community.detail', $community->id) }}">
         <div>
-            <p>{{ $community->user->name}}</p>
+            <p class="font-semibold">{{ $community->user->name}}</p>
         </div>
         <div>
             <p>{{ $community->com_text }}</p>
         </div>
         <div>
             @if ($community->path)
-            <img src="{{ Storage::url($community->path) }}" alt="Community Image" class="rounded-lg">
+            <img src="{{ Storage::url($community->path) }}" alt="Community Image" class="rounded-lg mt-3">
             {{-- @else
                 <p>画像は登録されていません</p> --}}
             @endif
