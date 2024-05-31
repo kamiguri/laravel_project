@@ -1,9 +1,11 @@
 @auth
-<div>
+<div class="w-full">
     <form action="{{ route('video.comment.store', [ 'id' => $video->id ])}}" method="POST">
         @csrf
-        <textarea name="text" placeholder="コメントする..." rows="1"></textarea>
-        <button type="submit">送信</button>
+        <x-textarea name="text" placeholder="コメントする..." class="w-full" rows="1" required></x-textarea>
+        <div class="flex justify-end">
+            <x-primary-button type="submit">送信</x-primary-button>
+        </div>
     </form>
 </div>
 @endauth

@@ -1,26 +1,27 @@
 <x-app-layout>
     <x-slot name="header">
-        <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Community') }}
-        </h1>
+        </h2>
     </x-slot>
-    <h1>コミュニティ投稿編集</h1>
-
-    <form action="{{ route('community.update', $communities->id) }}" method="POST">
-        @csrf
-        <div>
-            <div>
-                <label for="com_text">投稿編集</label>
-                <input type="text" name="com_text" value="{{old('com_text', $communities->com_text)}}">
-            </div>
+    <div class="flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <h1 class="text-lg font-bold">コミュニティ投稿編集</h1>
+            <form action="{{ route('community.update', $communities->id) }}" method="POST">
+                @csrf
+                <div class="mt-3">
+                    <x-input-label for="title" :value="__('投稿内容')" />
+                    <x-textarea name="com_text" id="com_text" class="w-full">{{old('com_text', $communities->com_text)}}</x-textarea>
+                </div>
+                <div class="mt-3 flex justify-between">
+                    <a href="{{ route('community.detail', $communities->id )}}"><x-secondary-button>コミュニティ画面へ</x-secondary-button></a>
+                    <x-primary-button type="submit" class="btn btn-primary">アップロード</x-primary-button>
+                </div>
+            </form>
         </div>
-        <div>
-            <input type="submit" value="送信">
-        </div>
-    </form>
-    <h1><a href="/community/create">コミュニティ投稿画面へ</a></h1>
-    <h1><a href="/community/show">自分の投稿へ</a></h1>
+    </div>
 </x-app-layout>
+
 
 
 
