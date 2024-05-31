@@ -4,24 +4,26 @@
             {{ __('Community') }}
         </h2>
     </x-slot>
-    <h1>Community</h1>
+    <h1><a href="/community/create">コミュニティ投稿画面へ</a></h1>
+    <h1><a href="/community/index">投稿一覧画面へ</a></h1>
+    <div class="border rounded-lg w-2/3 p-5 my-5">
     <div>
-        <p>
-        @if ($community->path)
-            <img src="{{ Storage::url($community->path) }}" alt="Community Image">
-        @else
-            <p>画像は登録されていません</p>
-        @endif
-        </p>
-    </div>
-    <div>
-        <p>{{ $community->users_id }}</p>
+        <p class="font-semibold">{{ $community->user->name }}</p>
     </div>
     <div>
         <p>{{ $community->com_text }}</p>
     </div>
-    @if ($community->users_id === Auth::id())
     <div>
+        <p>
+        @if ($community->path)
+            <img src="{{ Storage::url($community->path) }}" alt="Community Image" class="rounded-lg mt-3">
+        {{-- @else
+            <p>画像は登録されていません</p> --}}
+        @endif
+        </p>
+    </div>
+    @if ($community->user_id === Auth::id())
+    <div class="mt-3">
         <form action="{{ route('community.edit', $community->id) }}" method="post">
             <a href="{{ route('community.edit', $community->id )}}">編集</a>
             @csrf
@@ -33,8 +35,7 @@
         </form>
     </div>
     @endif
-    <h1><a href="/community/create">コミュニティ投稿画面へ</a></h1>
-    <h1><a href="/community/index">投稿一覧画面へ</a></h1>
+    </div>
 
     @include('comment.create-community-comment')
     @forelse ($community->comments as $comment)
