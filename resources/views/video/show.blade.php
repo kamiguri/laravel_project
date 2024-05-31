@@ -1,14 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('You Tube!!') }}
+            {{ __('Home') }}
         </h2>
     </x-slot>
     <a href="/video/index">一覧画面へ戻る</a>
 
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <div class="col-span-2">
-            <video controls autoplay class="rounded-lg">
+
+            <video controls autoplay preload class="rounded-lg">
+
                 <source src="{{ url($video->path) }}">
             </video>
             <p class="text-2xl font-bold mt-2">{{$video->title}}</p>
