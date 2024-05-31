@@ -54,7 +54,15 @@ class VideoController extends Controller
     {
         $video = Video::find($id);
         $subscribers = Subscribe::where('subscribed_id',$video->user_id)->count();
-        return view('/video/show',compact('video','subscribers'));
+
+        $is_subscribed = false;
+        if (Auth::check()) {
+            $is_subscribed = Subscribe::where('subscribed_id',$video->user_id)
+                ->where('subscribing_id', Auth::id())
+                ->exists();
+        }
+
+        return view('/video/show',compact('video','subscribers', 'is_subscribed'));
     }
 
     public function edit(string $id)
