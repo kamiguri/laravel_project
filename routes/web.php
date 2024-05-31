@@ -5,6 +5,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\SubscribeController;
+use App\Models\Subscribe;
 
 Route::get('/', function () {
     return redirect()->route('video.index');
@@ -26,6 +28,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/video/delete/{id}',[VideoController::class,'delete'])->name('video.delete');
     Route::get('/video/edit/{id}',[VideoController::class,'edit'])->name('video.edit');
     Route::post('/video/update/{id}',[VideoController::class,'update'])->name('video.update');
+});
+
+Route::middleware('auth')->group(function (){
+    Route::post('/video/show/{id}',[SubscribeController::class,'store'])->name('subsc.store');
 });
 
 Route::get('/community/index', [CommunityController::class, 'index'])->name('community.index');

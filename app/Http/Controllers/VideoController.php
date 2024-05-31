@@ -52,6 +52,7 @@ class VideoController extends Controller
     public function show(string $id)
     {
         $video = Video::find($id);
+        // dd($video->user->id);
         return view('/video/show',compact('video'));
     }
 

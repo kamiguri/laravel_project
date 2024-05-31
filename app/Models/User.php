@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Models\Subscribe;
 
 class User extends Authenticatable
 {
@@ -48,5 +50,10 @@ class User extends Authenticatable
     public function videos()
     {
         return $this->hasMany(Video::class);
+    }
+
+    public function subscribings(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class,'subscribes','subscribed_id','subscribing_id');
     }
 }
