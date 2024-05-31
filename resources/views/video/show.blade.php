@@ -13,6 +13,10 @@
             </video>
             <p class="text-2xl font-bold px-3">{{$video->title}}</p>
             <p class="text-lg font-semibold p-3">{{$video->user->name}}</p>
+            <form action="{{route('subsc.store',$video->user->id)}}" method="POST">
+                @csrf
+                <button id="subscButton" class="subscribe">登録</button>
+            </form>
 
             <div class="rounded bg-neutral-200 p-3">
             <div id="video_overview" class="cursor-pointer">
