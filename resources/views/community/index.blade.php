@@ -19,7 +19,7 @@
         </div>
         <div>
             @if ($community->path)
-            <img src="{{ Storage::url($community->path) }}" alt="Community Image">
+            <img src="{{ Storage::url($community->path) }}" alt="Community Image" class="rounded-lg">
             {{-- @else
                 <p>画像は登録されていません</p> --}}
             @endif
