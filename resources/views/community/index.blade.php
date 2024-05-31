@@ -19,7 +19,7 @@
             @endif
         </div>
         <div>
-            <p>{{ $community->user_id }}</p>
+            <p>{{ $community->user->name }}</p>
         </div>
         <div>
             <p>{{ $community->com_text }}</p>
