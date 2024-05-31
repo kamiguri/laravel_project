@@ -8,26 +8,34 @@
 
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <div class="col-span-2">
-            <video controls autoplay>
+            <video controls autoplay class="rounded-lg">
                 <source src="{{ url($video->path) }}">
             </video>
-            <p class="text-2xl font-bold px-3">{{$video->title}}</p>
-            <p class="text-lg font-semibold p-3">{{$video->user->name}} 登録者数：{{$subscribers}}</p>
-            <div class="subscribe">
-            @if(Auth::id() !== $video->user->id)
-                <form action="{{route('subsc.store',$video->user->id)}}" method="POST">
-                    @csrf
-                    <button id="subscButton" class="subscribe">登録</button>
-                </form>
-            @endif
-
+            <p class="text-2xl font-bold mt-2">{{$video->title}}</p>
+            <div class="flex items-center pl-5 mt-2">
+                <div>
+                    <p class="font-semibold">{{$video->user->name}}</p>
+                    <p class="text-sm">登録者数：{{$subscribers}}</p>
+                </div>
+                @if(Auth::id() !== $video->user->id)
+                <div class="ml-7">
+                    <form action="{{route('subsc.store',$video->user->id)}}" method="POST">
+                        @csrf
+                        @if($is_subscribed)
+                        <x-secondary-button id="subscButton" type="submit">登録解除</x-secondary-button>
+                        @else
+                        <x-primary-button id="subscButton">登録</x-primary-button>
+                        @endif
+                    </form>
+                </div>
+                @endif
             </div>
-            <div class="rounded bg-neutral-200 p-3">
-            <div id="video_overview" class="cursor-pointer">
-                <p class="font-medium">{{$video->created_at}}</p>
-                <p id="video_overview_text" class="w-1/4 truncate">{{$video->overview}}</p>
-                <p id="show_more_phrase">...もっと見る</p>
-            </div>
+            <div class="rounded bg-neutral-200 mt-2 p-3">
+                <div id="video_overview" class="cursor-pointer">
+                    <p class="font-medium">{{$video->created_at}}</p>
+                    <p id="video_overview_text" class="w-1/4 truncate">{{$video->overview}}</p>
+                    <p id="show_more_phrase">...もっと見る</p>
+                </div>
                 <button id="close_video_overview_btn" class="hidden font-light mt-4">一部を表示</button>
             </div>
         </div>
