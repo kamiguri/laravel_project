@@ -27,7 +27,7 @@ class CommunityController extends Controller
         $communities->com_text = $request->com_text;
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('public', 'images');
+            $path = $request->file('image')->store('images', 'public');
             $communities->path = $path;}
 
         $communities->updated_at = now();
