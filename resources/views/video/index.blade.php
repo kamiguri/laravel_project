@@ -7,8 +7,8 @@
     <h1>Video List</h1>
     <form action="{{route('video.index')}}" method="GET">
         @csrf
-        <input type="search" name="search" value="{{ request('search')}}">
-        <button>検索</button>
+        <x-text-input type="search" name="search" value="{{ request('search')}}" class="w-2/3" />
+        <x-primary-button>検索</x-primary-button>
     </form>
 
     <h1><a href="/video/create">動画投稿画面へ</a></h1>

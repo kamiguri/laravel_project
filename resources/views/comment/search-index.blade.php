@@ -5,8 +5,8 @@
         </h2>
     </x-slot>
     <form action="{{route('comment.search')}}" method="GET">
-        <input type="search" name="keywords" value="{{ request('keywords')}}">
-        <button>検索</button>
+        <x-text-input type="search" name="keywords" class="w-2/3" value="{{ request('keywords')}}" />
+        <x-primary-button>検索</x-primary-button>
     </form>
 
     <div>
