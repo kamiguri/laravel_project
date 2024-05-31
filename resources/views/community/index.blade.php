@@ -16,11 +16,12 @@
             @endif
         </div>
         <div>
-            <p>{{ $community->users_id }}</p>
+            <p>{{ $community->user_id }}</p>
         </div>
         <div>
             <p>{{ $community->com_text }}</p>
         </div>
+
     </a>
     @endforeach
 
