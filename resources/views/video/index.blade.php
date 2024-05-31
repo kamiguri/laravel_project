@@ -18,12 +18,13 @@
             @foreach($video_query as $query)
             <div class="video-item">
                 <a href="{{route('video.show',$query->id)}}">
-                    <p>タイトル：{{$query->title}}</p>
-                    <video controls width="400" muted>
+                    <video controls width="400" muted class="clip rounded-lg">
                         <source src="{{ asset($query->path) }}">
                     </video>
-                    <p>概要：{{$query->overview}}</p>
-                    <p>作成者：{{$query->user->name}}</p>
+                    <div class="px-5">
+                        <p class="text-lg font-semibold">{{$query->title}}</p>
+                        <p class="text-sm text-slate-600">{{$query->user->name}}</p>
+                    </div>
                 </a>
             </div>
             @endforeach
@@ -31,7 +32,7 @@
             @foreach($videos as $video)
                 <div class="video-item">
                     <a href="{{route('video.show',$video->id)}}">
-                        <video controls width="400" muted class="rounded-lg">
+                        <video controls width="400" muted class="clip rounded-lg">
                             <source src="{{ asset($video->path) }}">
                         </video>
                         <div class="px-5">
