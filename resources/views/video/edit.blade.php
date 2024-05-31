@@ -7,23 +7,23 @@
     <div class="flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
 
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-            @foreach ($errors->all() as $error)
-                {{$error}}
-            @endforeach
             <form action="{{ route('video.update',$video->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <div class="mb-3">
                         <x-input-label for="title" :value="__('タイトル')" />
                         <x-text-input id="title" type="text" class="form-control block mt-1 w-full" name="title" value="{{old('title',$video->title)}}" />
+                        @error('title') {{$message}} @enderror
                     </div>
                     <div class="mb-3">
                         <x-input-label for="file" :value="__('ファイルを選択')" />
-                        <input id="file" type="file" class="form-control" name="video">
+                        <input id="file" type="file" class="form-control" name="video"><br/>
+                        @error('video') {{$message}} @enderror
                     </div>
                     <div class="mb-3">
                         <x-input-label for="overview" :value="__('概要')" />
                         <x-textarea id="overview" type="textarea" class="form-control w-full" name="overview">{{old('overview',$video->overview)}}</x-textarea>
+                        @error('overview') {{$message}} @enderror
                     </div>
                 </div>
                 <div class="flex justify-between">
