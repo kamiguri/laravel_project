@@ -10,7 +10,7 @@
         <a href="{{ route('community.detail', $community->id) }}">
         <div>
             @if ($community->path)
-            <source src="{{ url($community->path) }}">
+            <img src="{{ Storage::url($community->path) }}" alt="Community Image">
             @else
                 <p>//////////////////////</p>
             @endif
