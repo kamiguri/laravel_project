@@ -1,25 +1,24 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('You Tube!!') }}
+            {{ __('Home') }}
         </h2>
     </x-slot>
-    <h1>Video List</h1>
     <form action="{{route('video.index')}}" method="GET">
         @csrf
         <x-text-input type="search" name="search" value="{{ request('search')}}" class="w-2/3" />
         <x-primary-button>検索</x-primary-button>
     </form>
 
-    <h1><a href="/video/create">動画投稿画面へ</a></h1>
+
 
     <div class="mt-6 grid grid-cols-1 gap-x-2 gap-y-10 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-4  xl:gap-x-4">
         @if(isset($video_query))
             @foreach($video_query as $query)
             <div class="video-item">
                 <a href="{{route('video.show',$query->id)}}">
-                    <video width="400" muted class="clip rounded-lg">
-                        <source src="{{ asset($query->path) }}">
+                    <video width="400" muted class="clip rounded-lg" preload>
+                        <source src="{{ asset($query->path) }}" type="video/webm">
                     </video>
                     <div class="px-5">
                         <p class="text-lg font-semibold">{{$query->title}}</p>

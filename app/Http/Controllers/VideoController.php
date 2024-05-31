@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\VideoRequest;
 use App\Models\Subscribe;
 use App\Models\Video;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class VideoController extends Controller
@@ -16,8 +17,8 @@ class VideoController extends Controller
         {
             $request->input('search');
             $query_request = $request->input('search');
-            $video_query = Video::query()->where('title','LIKE','%' . self::escape($query_request) . '%')->get();
-            // dd($video_query);
+            $video_query = Video::select('id','title','path','overview','user_id')->where('title','LIKE','%' . self::escape($query_request) . '%')->get();
+
             return view('/video/index',compact('video_query'));
         }
         $videos = Video::with('user')->get();

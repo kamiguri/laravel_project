@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('video.index')" :active="request()->routeIs('video.index')">
-                        {{ __('You Tube') }}
+                        {{ __('Home') }}
                     </x-nav-link>
                     <x-nav-link :href="route('community.index')" :active="request()->routeIs('community.index')">
                         {{ __('Community') }}

@@ -23,7 +23,7 @@ class VideoRequest extends FormRequest
     {
         return [
             'title' => 'required|max:100',
-            'video' => 'required|mimes:mp4,qt,x-ms-wmv,mpeg,x-msvideo',
+            'video' => 'required|mimes:mp4,qt,x-ms-wmv,mpeg,x-msvideo,mov',
             'overview'=>'required|max:255',
         ];
     }
