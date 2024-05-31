@@ -7,9 +7,9 @@
     <h1>Community</h1>
 
     @foreach ($communities as $community)
-    @if ($community->users_id === Auth::id())
+    @if ($community->user_id === Auth::id())
     <div>
-        <p>{{ $community->users_id }}</p>
+        <p>{{ $community->user_id }}</p>
     </div>
     <div>
         <p>{{ $community->com_text }}</p>

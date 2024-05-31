@@ -26,8 +26,9 @@ class CommunityController extends Controller
         $communities->user_id = Auth::id();
         $communities->com_text = $request->com_text;
 
-        $path = $request->file('image')->store('images','public');
-        $communities->path = $path;
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public', 'images');
+            $communities->path = $path;}
 
         $communities->updated_at = now();
 
